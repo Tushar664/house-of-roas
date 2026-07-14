@@ -299,6 +299,9 @@ section{padding:100px 0;position:relative;}
 @media(max-width:780px){
   .clients__head{margin-bottom:34px;}
   .creators-slider::before,.creators-slider::after{display:none;}
+  .creator-card:hover{transform:none;border-color:rgba(255,255,255,.12);box-shadow:0 10px 24px rgba(0,0,0,.28);}
+  .creator-card:hover .creator-card__media img{transform:none;}
+  .creator-card:hover .creator-card__cta{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);}
   .creator-card{scroll-snap-align:start;}
   .creator-card{flex-basis:min(330px,calc(100vw - 48px));min-height:500px;}
   .creator-card__body{padding:20px;}
@@ -1337,7 +1340,8 @@ section{padding:100px 0;position:relative;}
   window.addEventListener('scroll',function(){
     var h=document.documentElement;
     var pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
-    if(pct>30&&pct<92&&!shown){bar.classList.add('is-visible');shown=true;}
+    var scrolledEnough=h.scrollTop>window.innerHeight*1.6;
+    if(scrolledEnough&&pct<92&&!shown){bar.classList.add('is-visible');shown=true;}
     if(pct>=92){bar.classList.remove('is-visible');}
   });
 })();
